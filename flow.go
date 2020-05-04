@@ -253,7 +253,7 @@ func (f *Flow) Add(pkt packet, srcip string) int {
 		if f.flast > 0 {
 			diff = now - f.flast
 			f.f[FIAT].Add(diff)
-			// log.Printf("FIAT: ",diff)
+			log.Printf("FIAT: ",diff)
 		}
 		if f.proto == IP_TCP {
 			// Packet is using TCP protocol
