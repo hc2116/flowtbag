@@ -109,7 +109,7 @@ func (f *DistributionFeature) Export() string {
 	)
 	if f.count > 0 {
 		stdDev = float32(stddev(float64(f.sumsq), float64(f.sum), f.count))
-		mean = f.sum / f.count
+		mean = float32(f.sum) / float32(f.count)
 	}
 	return fmt.Sprintf("%d,%g,%d,%g", f.min, mean, f.max, stdDev)
 }
