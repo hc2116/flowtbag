@@ -104,11 +104,11 @@ func (f *DistributionFeature) Add(val int64) {
 
 func (f *DistributionFeature) Export() string {
 	var (
-		stdDev int64 = 0
-		mean   int64 = 0
+		stdDev float64 = 0
+		mean   float64 = 0
 	)
 	if f.count > 0 {
-		stdDev = int64(stddev(float64(f.sumsq), float64(f.sum), f.count))
+		stdDev = float64(stddev(float64(f.sumsq), float64(f.sum), f.count))
 		mean = f.sum / f.count
 	}
 	return fmt.Sprintf("%d,%d,%d,%d", f.min, mean, f.max, stdDev)
