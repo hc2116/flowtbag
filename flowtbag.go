@@ -147,7 +147,7 @@ func process(raw *pcap.Packet) {
 	defer catchPanic()
 	pCount++
 	if (pCount % reportInterval) == 0 {
-		timeInt := raw.Time.Unix()
+		timeInt := raw.Time.UnixNano()
 		endTime = time.Now()
 		cleanupActive(timeInt)
 		runtime.GC()
@@ -192,7 +192,7 @@ func process(raw *pcap.Packet) {
 	} else {
 		log.Fatal("Not TCP or UDP. Packet should not have made it this far.")
 	}
-	pkt["time"] = raw.Time.Unix()
+	pkt["time"] = raw.Time.UnixNano()
 	ts := stringTuple(srcip, srcport, dstip, dstport, proto)
 	flow, exists := activeFlows[ts]
 	if exists {
