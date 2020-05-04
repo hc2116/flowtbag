@@ -111,7 +111,7 @@ func (f *DistributionFeature) Export() string {
 		stdDev = float64(stddev(float64(f.sumsq), float64(f.sum), f.count))
 		mean = f.sum / f.count
 	}
-	return fmt.Sprintf("%d,%d,%d,%d", f.min, mean, f.max, stdDev)
+	return fmt.Sprintf("%d,%g,%d,%g", f.min, mean, f.max, stdDev)
 }
 
 func (f *DistributionFeature) Get() int64 {
